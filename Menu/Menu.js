@@ -36,7 +36,10 @@ const menuItems = [
 function createMenu(data) {
   // create menu
   const menu = document.createElement('div');
-  menu.classList.add('menu'); 
+  menu.classList.add('menu');
+  menu.addEventListener('click', event => {
+    event.stopPropagation();
+  });
   // create list
   const list = document.createElement('ul');
   // add list items
@@ -48,8 +51,18 @@ function createMenu(data) {
   }
   // toggle menu
   const menuButton = document.querySelector('.menu-button');
-  menuButton.addEventListener('click', () => {
+  menuButton.addEventListener('click', event => {
     menu.classList.toggle('menu--open');
+    event.stopPropagation();
+  });
+  
+  document.addEventListener('click', () => {
+    console.log('doc click');
+    console.log(menuButton.classList);
+    if (menu.classList.contains('menu--open')) {
+      console.log('contains');
+      menu.classList.remove('menu--open');
+    }
   });
 
   menu.appendChild(list);
