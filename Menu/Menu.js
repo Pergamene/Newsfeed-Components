@@ -8,6 +8,7 @@ const menuItems = [
   'Music',
   'Log Out'
 ];
+
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
@@ -33,18 +34,19 @@ const menuItems = [
   
 */
 function createMenu(data) {
+  // create menu
   const menu = document.createElement('div');
   menu.classList.add('menu'); 
-
+  // create list
   const list = document.createElement('ul');
-
+  // add list items
   let li;
   for (element of data) {
     li = document.createElement('li');
     li.textContent = element;
     list.appendChild(li);
   }
-  
+  // toggle menu
   const menuButton = document.querySelector('.menu-button');
   menuButton.addEventListener('click', () => {
     menu.classList.toggle('menu--open');
