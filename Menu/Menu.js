@@ -54,16 +54,14 @@ function createMenu(data) {
   menuButton.addEventListener('click', event => {
     menu.classList.toggle('menu--open');
     event.stopPropagation();
+    
+    document.addEventListener('click', () => {
+      if (menu.classList.contains('menu--open')) {
+        menu.classList.remove('menu--open');
+      }
+    });
   });
   
-  document.addEventListener('click', () => {
-    console.log('doc click');
-    console.log(menuButton.classList);
-    if (menu.classList.contains('menu--open')) {
-      console.log('contains');
-      menu.classList.remove('menu--open');
-    }
-  });
 
   menu.appendChild(list);
   return menu;
